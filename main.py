@@ -1,6 +1,6 @@
-from src.ship import Ship
-from src.ship import Cruise
-from src.ship import Cargo
+from src.ships import Ship
+from src.ships import Cruise
+from src.ships import Cargo
 
 import pandas as pd
 def main() -> None:

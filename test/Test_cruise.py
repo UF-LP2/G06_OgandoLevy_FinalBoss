@@ -1,5 +1,5 @@
 import pytest
-from src.ship import Cruise
+from src.ships import Cruise
 def test_cruise_negativo_1() -> None:
     #Creo objetos que se que van a fallar
     crucero1 = Cruise(1, 20, 15)

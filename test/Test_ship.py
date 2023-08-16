@@ -1,5 +1,5 @@
 import pytest
-from src.ship import Ship
+from src.ships import Ship
 def test_negativo_ship():
   barquito=Ship(20,15)
   barquito2=Ship(-20, 15)

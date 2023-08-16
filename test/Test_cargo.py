@@ -1,5 +1,5 @@
 import pytest
-from src.ship import Cargo
+from src.ships import Cargo
 
 def test_cargo1() -> None:
     #todoOk
