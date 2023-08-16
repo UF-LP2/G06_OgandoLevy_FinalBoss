@@ -3,9 +3,18 @@ class Ship:
         self.crew = crew
         self.draft = (1.5 * self.crew) + draft
 
+    def Convertidor(valor) -> float:
+        try:
+            aux = float(valor)
+        except ValueError as e:
+            print(e.args)
+        else:
+            if aux >= 0:
+                return aux
+        raise ValueError("El valor ingresado no es valido")
     def is_worth_it(self):
         """try:"""
-        peso = self.draft - (self.crew * 1.5)
+        peso = Ship.Convertidor(self.draft) - (Ship.Convertidor(self.crew) * 1.5)
         if peso <= 20:
             raise ValueError("No merece ser saqueado")
         else:
@@ -23,7 +32,7 @@ class Cruise (Ship):
 
     def is_worth_it(self):
         """try:"""
-        peso = self.draft - (self.crew * 1.5) - (self.passengers * 2.25)
+        peso = Ship.Convertidor(self.draft) - (Ship.Convertidor(self.crew) * 1.5) - (Ship.Convertidor(self.passengers) * 2.25)
         if peso <= 20:
             raise ValueError("No merece ser  saqueado")
         else:
@@ -37,18 +46,18 @@ class Cargo(Ship):
         Ship.__init__(self, draft, crew)
         self.cargo = cargo
         self.quality = quality
-        if self.quality == 1:
-            self.draft = 3.5 + draft
-        elif self.quality == 0.5:
-            self.draft = 2 + draft
-        elif self.quality == 0.25:
-            self.draft = 0.5 + draft
+    def is_worth_it(self):
+        cargo_aux_val = 0
+        if Ship.Convertidor(self.quality) == 1:
+            cargo_aux_val = 3.5
+        elif Ship.Convertidor(self.quality) == 0.5:
+            cargo_aux_val = 2
+        elif Ship.Convertidor(self.quality) == 0.25:
+            cargo_aux_val = 0.5
         else:
             raise ValueError("Something else went wrong")
 
-    def is_worth_it(self):
-        """try:"""
-        peso = self.draft - (self.crew * 1.5)
+        peso = Ship.Convertidor(self.draft) - Ship.Convertidor(self.crew * 1.5) - Ship.Convertidor(self.crew * cargo_aux_val)
         if peso <= 20:
             raise ValueError("No merece ser  saqueado")
         else:
